@@ -1,0 +1,21 @@
+{
+  "ModId": "p4g64.animatedcutins.next",
+  "ModName": "My Cool Reloaded Mod",
+  "ModAuthor": "Me",
+  "ModVersion": "1.0.0",
+  "ModDescription": "Description",
+  "ModDll": "p4g64.animatedcutins.next.dll",
+  "ModIcon": "Preview.png",
+  "ModR2RManagedDll32": "x86/p4g64.animatedcutins.next.dll",
+  "ModR2RManagedDll64": "x64/p4g64.animatedcutins.next.dll",
+  "ModNativeDll32": "",
+  "ModNativeDll64": "",
+  "IsLibrary": false,
+  "ReleaseMetadataFileName": "p4g64.animatedcutins.next.ReleaseMetadata.json",
+  "PluginData": {},
+  "IsUniversalMod": false,
+  "ModDependencies": [ "reloaded.sharedlib.hooks" ],
+  "OptionalDependencies": [],
+  "SupportedAppId": [],
+  "ProjectUrl": ""
+}
