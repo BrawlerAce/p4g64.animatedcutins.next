@@ -1,6 +1,7 @@
 ﻿using p4g64.animatedcutins.next.Template.Configuration;
 using Reloaded.Mod.Interfaces.Structs;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace p4g64.animatedcutins.next.Configuration
 {
@@ -26,81 +27,76 @@ namespace p4g64.animatedcutins.next.Configuration
             The `DefaultValue` attribute is used as part of the `Reset` button in Reloaded-Launcher.
         */
 
-        [DisplayName("String")]
-        [Description("This is a string.")]
-        [DefaultValue("Default Name")]
-        public string String { get; set; } = "Default Name";
-
-        [DisplayName("Int")]
-        [Description("This is an int.")]
-        [DefaultValue(42)]
-        public int Integer { get; set; } = 42;
-
-        [DisplayName("Bool")]
-        [Description("This is a bool.")]
-        [DefaultValue(true)]
-        public bool Boolean { get; set; } = true;
-
-        [DisplayName("Float")]
-        [Description("This is a floating point number.")]
-        [DefaultValue(6.987654F)]
-        public float Float { get; set; } = 6.987654F;
-
-        [DisplayName("Enum")]
-        [Description("This is an enumerable.")]
-        [DefaultValue(SampleEnum.ILoveIt)]
-        public SampleEnum Reloaded { get; set; } = SampleEnum.ILoveIt;
-
-        public enum SampleEnum
+        // Cut-in Style
+        public enum Appearance
         {
-            NoOpinion,
-            Sucks,
-            IsMediocre,
-            IsOk,
-            IsCool,
-            ILoveIt
+            [Display(Name = "P4A Style")]
+            P4A,
+            [Display(Name = "P4G Style")]
+            P4G,
         }
 
-        [DisplayName("Int Slider")]
-        [Description("This is a int that uses a slider control similar to a volume control slider.")]
-        [DefaultValue(100)]
-        [SliderControlParams(
-            minimum: 0.0,
-            maximum: 100.0,
-            smallChange: 1.0,
-            largeChange: 10.0,
-            tickFrequency: 10,
-            isSnapToTickEnabled: false,
-            tickPlacement: SliderControlTickPlacement.BottomRight,
-            showTextField: true,
-            isTextFieldEditable: true,
-            textValidationRegex: "\\d{1-3}")]
-        public int IntSlider { get; set; } = 100;
+        [Category("Appearance")]
+        [DisplayName("Cut-in Style")]
+        [Description("Choose a cut-in style.\n\nP4G Style: Shorter, smaller cut-ins similarly sized to the base game's cut-ins.\n\nP4A Style: Taller, larger cut-ins that are more faithful to the anime.")]
+        [DefaultValue(Appearance.P4A)]
+        public Appearance AppearanceConfig { get; set; } = Appearance.P4A;
 
-        [DisplayName("Double Slider")]
-        [Description("This is a double that uses a slider control without any frills.")]
-        [DefaultValue(0.5)]
-        [SliderControlParams(minimum: 0.0, maximum: 1.0)]
-        public double DoubleSlider { get; set; } = 0.5;
+        // Character Toggles
+        [Category("Character Toggle")]
+        [DisplayName("Protagonist")]
+        [Description("Toggles animated cut-ins for the given character.")]
+        [DefaultValue(true)]
+        public bool ProtagEnabled { get; set; } = true;
 
-        [DisplayName("File Picker")]
-        [Description("This is a sample file picker.")]
-        [DefaultValue("")]
-        [FilePickerParams(title: "Choose a File to load from")]
-        public string File { get; set; } = "";
+        [Category("Character Toggle")]
+        [DisplayName("Yosuke")]
+        [Description("Toggles animated cut-ins for the given character.")]
+        [DefaultValue(true)]
+        public bool YosukeEnabled { get; set; } = true;
 
-        [DisplayName("Folder Picker")]
-        [Description("Opens a file picker but locked to only allow folder selections.")]
-        [DefaultValue("")]
-        [FolderPickerParams(
-            initialFolderPath: Environment.SpecialFolder.Desktop,
-            userCanEditPathText: false,
-            title: "Custom Folder Select",
-            okButtonLabel: "Choose Folder",
-            fileNameLabel: "ModFolder",
-            multiSelect: true,
-            forceFileSystem: true)]
-        public string Folder { get; set; } = "";
+        [Category("Character Toggle")]
+        [DisplayName("Chie")]
+        [Description("Toggles animated cut-ins for the given character.")]
+        [DefaultValue(true)]
+        public bool ChieEnabled { get; set; } = true;
+
+        [Category("Character Toggle")]
+        [DisplayName("Yukiko")]
+        [Description("Toggles animated cut-ins for the given character.")]
+        [DefaultValue(true)]
+        public bool YukikoEnabled { get; set; } = true;
+
+        [Category("Character Toggle")]
+        [DisplayName("Kanji")]
+        [Description("Toggles animated cut-ins for the given character.")]
+        [DefaultValue(true)]
+        public bool KanjiEnabled { get; set; } = true;
+
+        [Category("Character Toggle")]
+        [DisplayName("Rise")]
+        [Description("Toggles animated cut-ins for the given character.")]
+        [DefaultValue(true)]
+        public bool RiseEnabled { get; set; } = true;
+
+        [Category("Character Toggle")]
+        [DisplayName("Teddie")]
+        [Description("Toggles animated cut-ins for the given character.")]
+        [DefaultValue(true)]
+        public bool TeddieEnabled { get; set; } = true;
+
+        [Category("Character Toggle")]
+        [DisplayName("Naoto")]
+        [Description("Toggles animated cut-ins for the given character.")]
+        [DefaultValue(true)]
+        public bool NaotoEnabled { get; set; } = true;
+
+        [Category("Character Toggle")]
+        [DisplayName("Culprit")]
+        [Description("Toggles animated cut-ins for the given character.")]
+        [DefaultValue(true)]
+        public bool CulpritEnabled { get; set; } = true;
+
     }
 
     /// <summary>

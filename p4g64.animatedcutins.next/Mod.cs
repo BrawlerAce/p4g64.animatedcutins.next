@@ -1,4 +1,5 @@
-﻿using p4g64.animatedcutins.next.Configuration;
+﻿using CriFs.V2.Hook.Interfaces;
+using p4g64.animatedcutins.next.Configuration;
 using p4g64.animatedcutins.next.Template;
 using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
@@ -58,6 +59,141 @@ namespace p4g64.animatedcutins.next
             // and some other neat features, override the methods in ModBase.
 
             // TODO: Implement some mod logic
+
+            var criFsController = _modLoader.GetController<ICriFsRedirectorApi>();
+            if (criFsController == null || !criFsController.TryGetTarget(out var criFsApi))
+            {
+                _logger.WriteLine($"criFSController returned as null! p4g64.animatedcutins.next won't work properly :(", System.Drawing.Color.Red);
+                return;
+            }
+
+            if (_configuration.AppearanceConfig == Config.Appearance.P4A)
+            {
+                if (_configuration.ProtagEnabled)
+                {
+                    criFsApi.AddProbingPath("P4A/Protag");
+                }
+                if (_configuration.YosukeEnabled)
+                {
+                    criFsApi.AddProbingPath("P4A/Yosuke");
+                }
+                if (_configuration.ChieEnabled)
+                {
+                    criFsApi.AddProbingPath("P4A/Chie");
+                }
+                if (_configuration.YukikoEnabled)
+                {
+                    criFsApi.AddProbingPath("P4A/Yukiko");
+                }
+                if (_configuration.KanjiEnabled)
+                {
+                    criFsApi.AddProbingPath("P4A/Kanji");
+                }
+                if (_configuration.RiseEnabled)
+                {
+                    criFsApi.AddProbingPath("P4A/Rise");
+                }
+                if (_configuration.TeddieEnabled)
+                {
+                    criFsApi.AddProbingPath("P4A/Teddie");
+                }
+                if (_configuration.NaotoEnabled)
+                {
+                    criFsApi.AddProbingPath("P4A/Naoto");
+                }
+                if (_configuration.CulpritEnabled)
+                {
+                    criFsApi.AddProbingPath("P4A/Culprit");
+                }
+            }
+
+            if (_configuration.AppearanceConfig == Config.Appearance.P4G)
+            {
+                if (_configuration.ProtagEnabled)
+                {
+                    criFsApi.AddProbingPath("P4G/Protag");
+                }
+                if (_configuration.YosukeEnabled)
+                {
+                    criFsApi.AddProbingPath("P4G/Yosuke");
+                }
+                if (_configuration.ChieEnabled)
+                {
+                    criFsApi.AddProbingPath("P4G/Chie");
+                }
+                if (_configuration.YukikoEnabled)
+                {
+                    criFsApi.AddProbingPath("P4G/Yukiko");
+                }
+                if (_configuration.KanjiEnabled)
+                {
+                    criFsApi.AddProbingPath("P4G/Kanji");
+                }
+                if (_configuration.RiseEnabled)
+                {
+                    criFsApi.AddProbingPath("P4G/Rise");
+                }
+                if (_configuration.TeddieEnabled)
+                {
+                    criFsApi.AddProbingPath("P4G/Teddie");
+                }
+                if (_configuration.NaotoEnabled)
+                {
+                    criFsApi.AddProbingPath("P4G/Naoto");
+                }
+                if (_configuration.CulpritEnabled)
+                {
+                    criFsApi.AddProbingPath("P4G/Culprit");
+                }
+            }
+
+
+            if ((_configuration.YosukeEnabled == true) && (_configuration.TeddieEnabled == true))
+            {
+                criFsApi.AddProbingPath("Union/JunesBomber/BothEnabled");
+            }
+
+            else if ((_configuration.YosukeEnabled == true) && (_configuration.TeddieEnabled == false))
+            {
+                criFsApi.AddProbingPath("Union/JunesBomber/YosukeEnabled");
+            }
+
+            else if ((_configuration.YosukeEnabled == false) && (_configuration.TeddieEnabled == true))
+            {
+                criFsApi.AddProbingPath("Union/JunesBomber/TeddieEnabled");
+            }
+
+
+            if ((_configuration.ChieEnabled == true) && (_configuration.YukikoEnabled == true))
+            {
+                criFsApi.AddProbingPath("Union/TwinDragons/BothEnabled");
+            }
+
+            else if ((_configuration.ChieEnabled == true) && (_configuration.YukikoEnabled == false))
+            {
+                criFsApi.AddProbingPath("Union/TwinDragons/ChieEnabled");
+            }
+
+            else if ((_configuration.ChieEnabled == false) && (_configuration.YukikoEnabled == true))
+            {
+                criFsApi.AddProbingPath("Union/TwinDragons/YukikoEnabled");
+            }
+
+
+            if ((_configuration.NaotoEnabled == true) && (_configuration.KanjiEnabled == true))
+            {
+                criFsApi.AddProbingPath("Union/BeautyAndTheBeast/BothEnabled");
+            }
+
+            else if ((_configuration.NaotoEnabled == true) && (_configuration.KanjiEnabled == false))
+            {
+                criFsApi.AddProbingPath("Union/BeautyAndTheBeast/NaotoEnabled");
+            }
+
+            else if ((_configuration.NaotoEnabled == false) && (_configuration.KanjiEnabled == true))
+            {
+                criFsApi.AddProbingPath("Union/BeautyAndTheBeast/KanjiEnabled");
+            }
         }
 
         #region Standard Overrides
